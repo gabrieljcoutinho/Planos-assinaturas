@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modos Premium</title>
+
+<style>
+:root {
+  --radius: 24px;
+  --transition: 0.6s cubic-bezier(.16,1,.3,1);
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  gap: 48px;
+}
+
+/* CARD BASE */
+.box {
+  width: 350px;
+  height: 260px;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform var(--transition), box-shadow 0.6s cubic-bezier(.16,1,.3,1);
+}
+
+/* Overlay */
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.05)
+  );
+  z-index: 1;
+}
+
+/* Borda */
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  border: 2px solid rgba(255,255,255,0.15);
+  transition: border-color 0.4s ease;
+  z-index: 3;
+}
+
+.box:hover {
+  transform: translateY(-16px) scale(1.08);
+}
+
+.box:hover::after {
+  border-color: rgba(255,255,255,0.45);
+}
+
+/* Texto */
+.box small {
+  position: absolute;
+  bottom: 70px;
+  left: 26px;
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  z-index: 2;
+}
+
+/* BOTÃO COMPRAR */
+.btn-comprar {
+  position: absolute;
+  bottom: 22px;
+  left: 26px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 4;
+  transition: all 0.35s ease;
+}
+
+/* BRONZE */
+.box1 {
+  background-image: url("./img/bronze.jpg");
+}
+.box1:hover { box-shadow: 0 0 45px rgba(205,127,50,0.85); }
+.btn-bronze {
+  background: linear-gradient(135deg,#CD7F32,#B87333);
+  color: #000;
+}
+.btn-bronze:hover {
+  box-shadow: 0 0 20px rgba(205,127,50,0.8);
+  transform: scale(1.08);
+}
+
+/* PRATA */
+.box2 {
+  background-image: url("./img/prata.jpg");
+}
+.box2:hover { box-shadow: 0 0 45px rgba(220,220,220,0.9); }
+.btn-prata {
+  background: linear-gradient(135deg,#E5E5E5,#A9A9A9);
+  color: #000;
+}
+.btn-prata:hover {
+  box-shadow: 0 0 20px rgba(220,220,220,0.8);
+  transform: scale(1.08);
+}
+
+/* DOURADO */
+.box3 {
+  background-image: url("./img/dourado.jpg");
+  box-shadow: 0 0 45px rgba(255,215,0,0.65);
+  transform: scale(1.05);
+}
+.box3:hover { box-shadow: 0 0 70px rgba(255,215,0,1); }
+.btn-dourado {
+  background: linear-gradient(135deg,#FFD700,#FFB700);
+  color: #000;
+}
+.btn-dourado:hover {
+  box-shadow: 0 0 30px rgba(255,215,0,1);
+  transform: scale(1.12);
+}
+
+/* BADGES */
+.modoBronze, .modoPrata, .modoDourado {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  z-index: 4;
+}
+
+.modoBronze {
+  background: linear-gradient(135deg,#804A00,#CD7F32);
+}
+.modoPrata {
+  background: linear-gradient(135deg,#E5E5E5,#A9A9A9);
+}
+.modoDourado {
+  background: linear-gradient(135deg,#FFD700,#FFB700);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="box box1">
+    <div class="modoBronze">Modo Essencial</div>
+    <small>Acesso inicial</small>
+    <button class="btn-comprar btn-bronze">Comprar</button>
+  </div>
+
+  <div class="box box2">
+    <div class="modoPrata">Modo Pro</div>
+    <small>Acesso parcial</small>
+    <button class="btn-comprar btn-prata">Comprar</button>
+  </div>
+
+  <div class="box box3">
+    <div class="modoDourado">Modo Premium ⭐</div>
+    <small>Acesso total</small>
+    <button class="btn-comprar btn-dourado">Comprar</button>
+  </div>
+
+</div>
+
+</body>
+</html>
